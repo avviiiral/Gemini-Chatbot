@@ -1,128 +1,88 @@
 # 🤖 Gemini Chatbot
 
-A simple AI chatbot built with **Streamlit** and **Google Gemini API** that lets users interact with a powerful LLM via a web interface.
+A simple AI chatbot built with **Streamlit** and the **Google Gemini API** that lets users interact with an LLM through a web interface.
 
-This project demonstrates how to build a web-based AI assistant using Google’s Gemini models — perfect as a demo, prototype, or learning project.
-
----
-
-## 🚀 Features
-
-- 🗨️ Chat UI using **Streamlit**
-- 🔑 Integration with **Google Gemini API**
-- 📜 Conversation history stored per session
-- 📦 Easy to set up and run locally
+This project demonstrates a local web-based AI assistant and is suitable as a demo, prototype, or learning project.
 
 ---
 
-## 📁 Project Structure
+## Features
+
+- Chat UI built with Streamlit
+- Integration with the Google Gemini API
+- Conversation history stored per session
+- Local setup using a Python virtual environment
+
+## Project Structure
 
 ```text
 .
 ├── main.py                # Main Streamlit app
 ├── check_models.py        # List available Gemini models
 ├── requirements.txt       # Python dependencies
-├── .env                   # Environment file (API key)
-├── venv/                  # Python virtual environment
-`
-```
-## 🛠️ Prerequisites
-
-- Before running the app, install:
-
-- Python 3.10+
-
-- A Google Gemini API key
-
-Get your API key from:
-```
-👉 https://aistudio.google.com/app/apikey
+├── .env.example           # Template for local API-key configuration
+└── .gitignore             # Excludes secrets and local environments
 ```
 
----
+## Prerequisites
 
-## 📦 Setup Instructions
-1. Clone the repository
-```
-git clone https://github.com/avviiiral/Gemini-Chatbot.git
-cd Gemini-Chatbot
-```
-2. Create & activate a Python virtual environment
-```
-python -m venv venv
-.\venv\Scripts\activate        # Windows PowerShell
-# OR
-source venv/bin/activate       # macOS/Linux
-```
-3. Install dependencies
-```
-pip install -r requirements.txt
-```
-4. Add your API key
+- Python 3.10 or newer
+- A Google Gemini API key from [Google AI Studio](https://aistudio.google.com/app/apikey)
 
-- Create a file named .env in the project root:
-```
-GOOGLE_API_KEY=YOUR_GOOGLE_API_KEY_HERE
-```
+## Setup
 
-- Be sure to replace YOUR_GOOGLE_API_KEY_HERE with your real key.
+1. Clone the repository:
 
----
+   ```bash
+   git clone https://github.com/avviiiral/Gemini-Chatbot.git
+   cd Gemini-Chatbot
+   ```
 
-## 📌 How to Run the App
+2. Create and activate a virtual environment:
 
-- Start the app using Streamlit:
-```
+   ```powershell
+   python -m venv venv
+   .\venv\Scripts\Activate.ps1
+   ```
+
+   On macOS/Linux, activate it with `source venv/bin/activate`.
+
+3. Install dependencies:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Create a local `.env` file from the template:
+
+   ```powershell
+   Copy-Item .env.example .env
+   ```
+
+   On macOS/Linux, use `cp .env.example .env`. Edit `.env` and replace `YOUR_GOOGLE_API_KEY_HERE` with your actual key. Never commit `.env` or publish the key.
+
+## Run
+
+```bash
 streamlit run main.py
 ```
 
-- Then open the browser at:
-```
-http://localhost:8501
-```
+Open `http://localhost:8501` in your browser.
 
----
+## How It Works
 
-## 🧠 How It Works
+1. The user enters a message in the Streamlit interface.
+2. The application sends the message to a Gemini model through the Google Gen AI SDK.
+3. The generated response is displayed in the chat interface.
 
-The app uses the google-genai Python SDK to call Gemini models and generate replies:
+## Troubleshooting
 
-- Users enter a message in the chat box
+Run `python check_models.py` to inspect models available to your API key. Model availability can depend on the SDK version and API access.
 
-- The app sends the message to the Gemini API
+## Security
 
-- The API returns an AI-generated response
+Keep API keys in your local `.env` file. The `.env` file is ignored by Git; commit only the `.env.example` template.
 
-- The response is displayed in the Streamlit UI
+## License
 
----
-
-## 🛡️ Notes
-
-Your .env file must not be committed — include it in .gitignore
-
-Model names must be compatible with your API key — check them with:
-```
-python check_models.py
-```
-
----
-
-## 📄 Example Code (Key snippet)
-```
-response = client.models.generate_content(
-    model="models/gemini-2.5-flash",
-    contents=user_input
-)
-```
-
----
-
-## 📜 License
-
-This project is open-source — feel free to use and modify!
-
-
----
-
-
+See the repository license file for the applicable terms.
