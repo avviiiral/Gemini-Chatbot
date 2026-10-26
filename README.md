@@ -85,4 +85,4 @@ Keep API keys in your local `.env` file. The `.env` file is ignored by Git; comm
 
 ## License
 
-See the repository license file for the applicable terms.
+A license file is not currently included in this repository. Add a `LICENSE` file with your chosen license before redistributing or inviting reuse.
